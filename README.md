@@ -18,12 +18,13 @@ TODO
 
 RaspberryPi setup:
 ==================
-# Start with the current Raspberry Pi image like 2014-06-20-wheezy-raspbian
+Start with the current Raspberry Pi image like 2014-06-20-wheezy-raspbian
 
-# Expand system image, reboot.
-sudo raspi-config
+Expand system image, reboot.
+`sudo raspi-config`
 
-# Set static ip 
+Set static ip 
+```
 sudo nano /etc/network/interfaces
 ::
 iface eth0 inet static
@@ -31,34 +32,39 @@ address 192.168.1.150 # use your own IP schema
 netmask 255.255.255.0
 broadcast 192.168.1.255
 gateway 192.168.1.1
+```
 
-# Update system:
+Update system:
+```
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
+```
+Install rrdtool (for graphing)
 
-# Install rrdtool (for graphing)
+`sudo apt-get install librrd-dev`
 
-sudo apt-get install librrd-dev
+Install RVM/ruby, this takes a long time:
+`curl -L get.rvm.io | bash -s stable --rails`
 
-# Install RVM/ruby, this takes a long time:
+Refresh the shell:
+`source /home/pi/.rvm/scripts/rvm`
 
-curl -L get.rvm.io | bash -s stable --rails
+Install ExecJS
+`gem install execjs`
 
-#refresh the shell:
-source /home/pi/.rvm/scripts/rvm
+Install NodeJS
+`sudo apt-get install nodejs`
 
-# Install ExecJS
-gem install execjs
-
-# Install NodeJS
-sudo apt-get install nodejs
-
-#Install RRD Tool
+Install RRD Tool
+```
 sudo apt-get install ruby-dev
 sudo apt-get install rrdtool
+```
 
-# Install ruby gems (don’t use sudo here, each user account needs its own RVM gemset)
+Install ruby gems (don’t use sudo here, each user account needs its own RVM gemset)
+```
 gem install rrd-ffi
 gem install serialport
 gem install rmodbus
+```
